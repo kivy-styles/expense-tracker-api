@@ -140,10 +140,12 @@ const app = express()
 
 app.use(express.static('static'))
 
+
 app.get('/api/expenses', (req,res)=>{
     let reimburse=`$${total}`
     const metadata=expenses.length
     const all={_expenses:expenses, _metadata:metadata, reimburse:reimburse}
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(all)
 })
 
